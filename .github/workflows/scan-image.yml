@@ -20,13 +20,13 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'alpine:3.4'
-          scan-type: 'table'
+          scan-type: 'config'
           hide-progress: false
           severity: 'CRITICAL,HIGH'
-          format: 'sarif'
-          output: 'image-scan-trivy-results.sarif'
+          format: 'table'
+          #output: 'image-scan-trivy-results.sarif'
 
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: 'image-scan-trivy-results.sarif'
+      #- name: Upload Trivy scan results to GitHub Security tab
+      #  uses: github/codeql-action/upload-sarif@v2
+      #  with:
+      #    sarif_file: 'image-scan-trivy-results.sarif'
