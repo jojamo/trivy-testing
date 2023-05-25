@@ -1,4 +1,4 @@
-name: "Check for vulnerabilities in docker image"
+name: "Check for vulnerabilities in alpine:3.4 docker image"
 
 on:
   pull_request:
