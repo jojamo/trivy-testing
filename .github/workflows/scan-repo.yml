@@ -20,13 +20,12 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
-          format: 'template'
-          template: '@/contrib/sarif.tpl'
+          format: 'table'
           output: 'repo-scan-trivy-results.sarif'
           severity: 'CRITICAL, HIGH'
           timeout: '30m'
-          repository: nodejs/node
-          ref: main
+          repository: 'nodejs/node'
+          ref: 'main'
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
