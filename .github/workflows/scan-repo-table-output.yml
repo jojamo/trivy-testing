@@ -1,0 +1,28 @@
+name: "Check for vulnerabilities in nodejs/node public repo"
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          repository: nodejs/node
+          ref: main
+
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          format: 'table'
+          severity: 'CRITICAL, HIGH'
+          timeout: '30m'
