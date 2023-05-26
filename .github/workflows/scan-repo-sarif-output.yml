@@ -1,4 +1,4 @@
-name: "Check for vulnerabilities in nodejs/node public repo"
+name: "Check for vulnerabilities in expressjs/express public repo"
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
         with:
-          repository: nodejs/node
+          repository: expressjs/express
           ref: main
 
       - name: Run Trivy vulnerability scanner in repo mode
